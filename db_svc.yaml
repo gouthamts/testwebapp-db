@@ -13,7 +13,7 @@ spec:
     protocol: TCP
     targetPort: 3306
   selector:
-    app: saththirdblb
+    app: saththirdb
   type: ClusterIP
 status:
   loadBalancer: {}
