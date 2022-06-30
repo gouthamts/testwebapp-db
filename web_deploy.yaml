@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: saththirwebapp
+  name: saththirwebapp
+  namespace: saththirns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: saththirwebapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: saththirwebapp
+    spec:
+      containers:
+      - image: wordpress
+        name: wordpress
+        ports:
+        - containerPort: 80
+        envFrom: # calling docker image env variables
+        - configMapRef:
+            name: saththirweb-config
+        env:
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: saththirdb-sec
+              key: db_pass
+        resources: {}
+status: {}
