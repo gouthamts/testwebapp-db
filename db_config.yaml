@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  MYSQL_USER: saththiruser
+  MYSQL_DATABASE: saththirdb
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: saththirdb-config
+  namespace: saththirns
